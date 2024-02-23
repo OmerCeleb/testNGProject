@@ -44,6 +44,9 @@ public class Day16_OrangeHRM_Login {
 //    Then verify the logout is successful
         Assert.assertTrue(orangeHRMLoginPage.userName.isDisplayed());
 
+        //    Close the driver
+        Driver.closeDriver();
+
     }
 
 }
