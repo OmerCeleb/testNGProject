@@ -1,8 +1,10 @@
 package myapp.tests.topics;
 
+import myapp.pages.OrangeHRM_DashboardPage;
 import myapp.pages.OrangeHRM_LoginPage;
 import myapp.utilities.Driver;
 import myapp.utilities.WaitUtils;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Day16_OrangeHRM_Login {
@@ -31,9 +33,16 @@ public class Day16_OrangeHRM_Login {
         orangeHRMLoginPage.login("Admin", "admin123");
 
 //    Then verify the login is successful
-//    And logout the application
-//    Then verify the logout is successful
+        // We need to create the object from OrangeHRM_DashboardPage to reach out to dropdown for verification purpose
+        OrangeHRM_DashboardPage orangeHRMDashboardPage = new OrangeHRM_DashboardPage(); //Creating the object of the relevent page
+        orangeHRMDashboardPage.dropDown.click();
+        WaitUtils.waitFor(2); // Hard Wait
 
+//    And logout the application
+        orangeHRMDashboardPage.logout.click();
+
+//    Then verify the logout is successful
+        Assert.assertTrue(orangeHRMLoginPage.userName.isDisplayed());
 
     }
 
