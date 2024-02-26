@@ -1,4 +1,4 @@
-package myapp.tests.topics;
+package myapp.tests.smoketest;
 
 import myapp.pages.BlueRental_HomePage;
 import myapp.pages.BlueRental_LoginPage;

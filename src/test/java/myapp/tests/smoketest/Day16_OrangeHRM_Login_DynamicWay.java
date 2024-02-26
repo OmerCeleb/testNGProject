@@ -1,4 +1,4 @@
-package myapp.tests.topics;
+package myapp.tests.smoketest;
 
 import myapp.pages.OrangeHRM_DashboardPage;
 import myapp.pages.OrangeHRM_LoginPage;
