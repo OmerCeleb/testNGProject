@@ -40,5 +40,11 @@ public class DataTablesPage {
     @FindBy(xpath = "//button[@class='btn']")
     public WebElement createButton;
 
+    @FindBy(xpath = "//input[@type='search']")
+    public WebElement searchBox;
+
+    @FindBy(xpath = "//td[@class='sorting_1']")
+    public WebElement nameField;
+
 
 }
