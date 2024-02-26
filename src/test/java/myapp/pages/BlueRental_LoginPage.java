@@ -24,4 +24,12 @@ public class BlueRental_LoginPage {
     @FindBy(xpath = "//button[@type='submit']")
     public WebElement loginButton;
 
+    @FindBy(id = "dropdown-basic-button")
+    public WebElement dropDown;
+
+    @FindBy(linkText = "Logout")
+    public WebElement logoutOption;
+
+    @FindBy(xpath = "//button[text()='OK']")
+    public WebElement okOption;
 }

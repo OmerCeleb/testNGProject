@@ -6,6 +6,7 @@ import myapp.utilities.BrowserUtils;
 import myapp.utilities.ConfigReader;
 import myapp.utilities.Driver;
 import myapp.utilities.WaitUtils;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class Day16_BlueRental_Login {
@@ -57,7 +58,25 @@ public class Day16_BlueRental_Login {
         BrowserUtils.clickWithTimeOut(blueRentalLoginPage.loginButton, 1);
 
 //    Then verify the login is successful
+        Assert.assertTrue(blueRentalLoginPage.dropDown.isDisplayed());
 
+//          OR
+//        BrowserUtils.verifyElementDisplayed(blueRentalLoginPage.dropDown);
+
+//      Then logout and verify logout is successfully
+//      First we need to click on dropdown, so we can see logout option
+//        blueRentalLoginPage.dropDown.click();
+        BrowserUtils.clickWithTimeOut(blueRentalLoginPage.dropDown, 2);
+
+//        blueRentalLoginPage.logoutOption.click();
+        BrowserUtils.clickWithTimeOut(blueRentalLoginPage.logoutOption, 2);
+        WaitUtils.waitFor(3);
+        BrowserUtils.clickWithTimeOut(blueRentalLoginPage.okOption, 2);
+
+//      Verify logout is successful
+        BrowserUtils.verifyElementDisplayed(blueRentalHomePage.userIcon);
+
+        Driver.closeDriver();
 
     }
 }
