@@ -1,5 +1,6 @@
 package myapp.tests.dataprovider;
 
+import myapp.utilities.DataProviderUtils;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -56,6 +57,21 @@ public class Day17_DataProvider1 {
 
     // NOTE: We should write DataProvider methods in UTILS class to implement DRY Rule (Don't Repeat Yourself)
     // When DataProvider methods are stored in a different class (like in UTILS class), we have to provide the Name of that class too
+
+
+    // Test method 4 => works with DataProviderUtils class
+    @Test(dataProvider = "employeeCredentialsProvider", dataProviderClass = DataProviderUtils.class)
+    public void test4(String email, String password) {
+        System.out.println("email = " + email + "password = " + password);
+
+    }
+
+    // Test method 5 => works with DataProviderUtils class
+    @Test(dataProvider = "employeeCredentialsProvider", dataProviderClass = DataProviderUtils.class)
+    public void test5(String email, String password) {
+        System.out.println("email = " + email + "password = " + password);
+
+    }
 
 
 }
