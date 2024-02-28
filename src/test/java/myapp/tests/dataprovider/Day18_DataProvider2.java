@@ -59,12 +59,13 @@ public class Day18_DataProvider2 {
         WaitUtils.waitFor(1);
 
 //    And search for the first name
-        dataTablesPage.searchBox.sendKeys("first_name");
+        dataTablesPage.searchBox.sendKeys(firstName);
         WaitUtils.waitFor(1);
 
 //    Then verify the name field contains firstname
-        Assert.assertTrue(dataTablesPage.nameField.getText().contains();
+        Assert.assertTrue(dataTablesPage.nameField.getText().contains(firstName));
 
+        Driver.closeDriver();
 
     }
 
