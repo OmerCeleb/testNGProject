@@ -66,8 +66,8 @@ public class Day17_DataProvider1 {
 
     }
 
-    // Test method 5 => works with DataProviderUtils class
-    @Test(dataProvider = "employeeCredentialsProvider", dataProviderClass = DataProviderUtils.class)
+    // Test method 5 => works with DataProviderUtils class + Excelsheet
+    @Test(dataProvider = "excelEmployeeData", dataProviderClass = DataProviderUtils.class)
     public void test5(String email, String password) {
         System.out.println("email = " + email + "password = " + password);
 
