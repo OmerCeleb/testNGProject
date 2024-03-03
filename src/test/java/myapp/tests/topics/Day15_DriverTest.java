@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 public class Day15_DriverTest {
 
-    @Test
+    @Test (groups = "minor_regression_group")
     public void driverTest() throws InterruptedException {
 
         //    driver.get("https://www.amazon.se"); We were calling driver from TestBase class in JUnit framework

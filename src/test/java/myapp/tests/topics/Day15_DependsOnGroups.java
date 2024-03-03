@@ -22,7 +22,7 @@ public class Day15_DependsOnGroups {
 
     }
 
-    @Test(groups = "Regression Test")
+    @Test(groups = "minor_regression_group")
     public void checkOutTest() {
         System.out.println("User is checking out...");
     }

@@ -32,7 +32,7 @@ public class Day15_Assertions {
 
     }
 
-    @Test
+    @Test (groups = "minor_regression_group")
     public void javaAssert() {
 
         /*
