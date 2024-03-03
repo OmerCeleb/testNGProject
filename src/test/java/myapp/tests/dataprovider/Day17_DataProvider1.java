@@ -29,7 +29,7 @@ public class Day17_DataProvider1 {
     }
 
     // DataProvider Method 2
-    @DataProvider(name = "employee_credentials")
+    @DataProvider
     // You can also give a customised name to @DataProvider and use that to connect with Test method
     public Object[][] credentialProvider() {
         Object[][] credentialList = {
@@ -42,11 +42,12 @@ public class Day17_DataProvider1 {
     }
 
 
-    // Test method 2
-    @Test(dataProvider = "credentialProvider")
-    public void test2(String username, String password, String title, String age) {
-        System.out.println("UserName " + username + "Password " + password + "Title " + title + "Age " + age);
-    }
+//    // Test method 2
+// If the DataProvider Method has a customized name, we cant use its original method name
+//    @Test(dataProvider = "credentialProvider")
+//    public void test2(String username, String password, String title, String age) {
+//        System.out.println("UserName " + username + "Password " + password + "Title " + title + "Age " + age);
+//    }
 
 
     // Test method 3
