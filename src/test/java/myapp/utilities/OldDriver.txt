@@ -16,13 +16,6 @@ public class Driver {
 
     This is SIMPLE Driver class... created on Singleton design pattern... but we will make it more DYNAMIC later on
 
-    NOTE: This Driver class will work the same way with Sequential tests as well as Parallel Tests
-
-    PLAN:
-    1. Create a private Constructor => to prevent any external instantiation
-    2. Use ThreadLocal class from Java to create thread safe variable
-    3. Driver.getDriver() will be used the same way as before... this will return us the copy of Driver each time for parallel testing
-
     */
 
     private static WebDriver driver;
