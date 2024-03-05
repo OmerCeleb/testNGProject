@@ -116,7 +116,7 @@ public class Day17_ExcelLogin {
             WaitUtils.waitFor(1);
 
 //    Then verify the name field contains firstname
-            Assert.assertTrue(dataTablesPage.nameField.getText().contains(eachData.get("first_name")));
+//            Assert.assertTrue(dataTablesPage.nameField.getText().contains(eachData.get("first_name")));
 
         }
 

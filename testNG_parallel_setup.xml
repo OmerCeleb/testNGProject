@@ -10,3 +10,4 @@
     </test>
 </suite>
 
+        <!-- you can choose parallel = "methods" to run parallel methods -->
