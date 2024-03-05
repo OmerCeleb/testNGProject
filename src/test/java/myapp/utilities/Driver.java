@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ThreadGuard;
 
 import java.time.Duration;
 
@@ -25,49 +26,59 @@ public class Driver {
 
     */
 
-    private static WebDriver driver;
-
-    public static WebDriver getDriver() {
-
-        if (driver == null) {
-
-            switch (ConfigReader.getProperty("browser")) {
-                case "chrome":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
-                    break;
-                case "firefox":
-                    WebDriverManager.firefoxdriver().setup();
-                    driver = new FirefoxDriver();
-                    break;
-                case "safari":
-                    WebDriverManager.safaridriver().setup();
-                    driver = new SafariDriver();
-                    break;
-                case "edge":
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
-                    break;
-                case "chrome-headless":
-                    WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver(new ChromeOptions().addArguments("--headless=new"));
-                    break;
-            }
-
-
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
-            driver.manage().window().maximize();
-
-        }
-
-        return driver;
+    private Driver() {  // private Constructor => to prevent any external instantiation
 
     }
 
+    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>(); // returns thread safe Driver instance each time
+
+    public static WebDriver getDriver() {
+
+        if (driver.get() == null) {
+            initialiseDriver();  // method call for switch statement
+        }
+        return driver.get();
+    }
+
+    public static void initialiseDriver() {
+
+
+        switch (ConfigReader.getProperty("browser")) {
+
+
+            case "chrome":
+                WebDriverManager.chromedriver().setup();
+                driver.set(ThreadGuard.protect(new ChromeDriver()));
+                break;
+            case "firefox":
+                WebDriverManager.firefoxdriver().setup();
+                driver.set(ThreadGuard.protect(new FirefoxDriver()));
+                break;
+            case "safari":
+                WebDriverManager.safaridriver().setup();
+                driver.set(ThreadGuard.protect(new SafariDriver()));
+                break;
+            case "edge":
+                WebDriverManager.edgedriver().setup();
+                driver.set(ThreadGuard.protect(new EdgeDriver()));
+                break;
+            case "chrome-headless":
+                WebDriverManager.chromedriver().setup();
+                driver.set(ThreadGuard.protect(new ChromeDriver(new ChromeOptions().addArguments("--headless=new"))));
+                break;
+
+
+        }
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+        driver.get().manage().window().maximize();
+
+    }
+
+
     public static void closeDriver() {
-        if (driver != null) {
-            driver.quit();
+        if (driver.get() != null) {
+            driver.remove();
             driver = null;
         }
     }
