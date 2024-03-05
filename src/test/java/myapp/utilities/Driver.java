@@ -23,6 +23,8 @@ public class Driver {
     1. Create a private Constructor => to prevent any external instantiation
     2. Use ThreadLocal class from Java to create thread safe variable
     3. Driver.getDriver() will be used the same way as before... this will return us the copy of Driver each time for parallel testing
+    4. Create a separate method for switch statement called initializeDriver() and call that method in getDriver() to implement the same
+       method in all existing codes
 
     */
 
@@ -78,8 +80,9 @@ public class Driver {
 
     public static void closeDriver() {
         if (driver.get() != null) {
+            driver.get().quit();
             driver.remove();
-            driver = null;
+
         }
     }
 
