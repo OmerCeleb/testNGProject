@@ -4,8 +4,10 @@ import myapp.utilities.Driver;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.SkipException;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
+@Listeners(myapp.utilities.ListenersUtils.class) // NOT Recommended... because of limited scope
 public class Day19_ListenersTest {
 
     /*
@@ -46,7 +48,7 @@ public class Day19_ListenersTest {
 
         String title = Driver.getDriver().getTitle();
         System.out.println("title = " + title);
-        System.out.println("This test will fail");
+        System.out.println("This is test 4 and it is meant to fail");
         Driver.getDriver().findElement(By.id("wrong_id")).sendKeys("iphone"); // fail
 
     }
