@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "https://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="https://www.w3.org/1999/xhtml">
+<head>
+<meta charset='utf-8'>
+<title>TestNG Report</title>
+<style type="text/css">
+table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}
+td,th {border:1px solid #009;padding:.25em .5em}
+.result th {vertical-align:bottom}
+.param th {padding-left:1em;padding-right:1em}
+.param td {padding-left:.5em;padding-right:2em}
+.stripe td,.stripe th {background-color: #E6EBF9}
+.numi,.numi_attn {text-align:right}
+.total td {font-weight:bold}
+.passedodd td {background-color: #0A0}
+.passedeven td {background-color: #3F3}
+.skippedodd td {background-color: #CCC}
+.skippedodd td {background-color: #DDD}
+.failedodd td,.numi_attn {background-color: #F33}
+.failedeven td,.stripe .numi_attn {background-color: #D00}
+.stacktrace {white-space:pre;font-family:monospace}
+.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}
+</style>
+</head>
+<body>
+<table cellspacing="0" cellpadding="0" class="testOverview">
+<tr><th>Test</th><th>Methods<br/>Passed</th><th>Scenarios<br/>Passed</th><th># skipped</th><th># failed</th><th>Total<br/>Time</th><th>Included<br/>Groups</th><th>Excluded<br/>Groups</th></tr>
+<tr><td style="text-align:left;padding-right:2em"><a href="#t1">Methods Level Parallel Testing</a></td><td class="numi">4</td><td class="numi">4</td><td class="numi">0</td><td class="numi_attn">1</td><td class="numi">69.3 seconds</td><td class="numi"></td><td class="numi"></td></tr>
+</table>
+<table cellspacing="0" cellpadding="0" class="methodOverview" id="summary">
+<tr><th>Class</th><th>Method</th><th># of<br/>Scenarios</th><th>Start</th><th>Time<br/>(ms)</th></tr>
+<tr id="t1"><th colspan="5">Methods Level Parallel Testing &#8212; failed</th></tr>
+<tr class="failedodd"><td>myapp.tests.smoketest.Day16_OrangeHRM_Login_DynamicWay</td><td><a href="#m1"><b>loginTestDynamic</b>  </a></td><td class="numi">1</td><td>1709736757210</td><td class="numi">37278</td></tr>
+<tr><th colspan="5">Methods Level Parallel Testing &#8212; passed</th></tr>
+<tr class="passedodd"><td>myapp.tests.excelautomation.Day17_ExcelLogin</td><td><a href="#m2"><b>loginTTestWithExcel</b>  </a></td><td class="numi">1</td><td>1709736778287</td><td class="numi">48171</td></tr>
+<tr class="passedeven"><td>myapp.tests.smoketest.Day16_OrangeHRM_Login_DynamicWay</td><td><a href="#m3"><b>loginTestDynamic_ReusableMethods</b>  </a></td><td class="numi">1</td><td>1709736757210</td><td class="numi">12519</td></tr>
+<tr class="passedodd"><td>myapp.tests.smoketest.Day16_OrangeHRM_Login</td><td><a href="#m4"><b>loginTest</b>  </a></td><td class="numi">1</td><td>1709736757210</td><td class="numi">21075</td></tr>
+<tr class="passedeven"><td>myapp.tests.excelautomation.Day17_ExcelLogin</td><td><a href="#m5"><b>loginTTest</b>  </a></td><td class="numi">1</td><td>1709736769731</td><td class="numi">16171</td></tr>
+</table>
+<h1>Methods Level Parallel Testing</h1>
+<h2 id="m1">myapp.tests.smoketest.Day16_OrangeHRM_Login_DynamicWay:loginTestDynamic</h2>
+<div>
+<div class="stacktrace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;css selector&quot;,&quot;selector&quot;:&quot;*[name=&apos;username&apos;]&quot;}
+  (Session info: chrome=122.0.6261.111)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: &apos;4.16.1&apos;, revision: &apos;9b4c83354e&apos;
+System info: os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;21.0.1&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [dad8e3e2a2c1c41496e4ba291943ee78, findElement {using=name, value=username}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 122.0.6261.111, chrome: {chromedriverVersion: 122.0.6261.94 (880dbf29479c..., userDataDir: C:\Users\yeniy\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62887}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62887/devtoo..., se:cdpVersion: 122.0.6261.111, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: dad8e3e2a2c1c41496e4ba291943ee78
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:200)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:133)
+	at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:52)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:191)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:200)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:175)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:523)
+	at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
+	at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:360)
+	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:354)
+	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
+	at jdk.proxy2/jdk.proxy2.$Proxy9.sendKeys(Unknown Source)
+	at myapp.pages.OrangeHRM_LoginPage.login(OrangeHRM_LoginPage.java:39)
+	at myapp.tests.smoketest.Day16_OrangeHRM_Login_DynamicWay.loginTestDynamic(Day16_OrangeHRM_Login_DynamicWay.java:35)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1144)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+... Removed 13 stack frames</div>
+</div>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m2">myapp.tests.excelautomation.Day17_ExcelLogin:loginTTestWithExcel</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m3">myapp.tests.smoketest.Day16_OrangeHRM_Login_DynamicWay:loginTestDynamic_ReusableMethods</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m4">myapp.tests.smoketest.Day16_OrangeHRM_Login:loginTest</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+<h2 id="m5">myapp.tests.excelautomation.Day17_ExcelLogin:loginTTest</h2>
+<p class="totop"><a href="#summary">back to summary</a></p>
+</body></html>

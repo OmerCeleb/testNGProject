@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="3" parallel="methods" name="Failed suite [Methods Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="3" parallel="methods" name="Methods Level Parallel Testing(failed)">
+    <classes>
+      <class name="myapp.tests.smoketest.Day16_OrangeHRM_Login_DynamicWay">
+        <methods>
+          <include name="loginTestDynamic"/>
+        </methods>
+      </class> <!-- myapp.tests.smoketest.Day16_OrangeHRM_Login_DynamicWay -->
+    </classes>
+  </test> <!-- Methods Level Parallel Testing(failed) -->
+</suite> <!-- Failed suite [Methods Suite] -->

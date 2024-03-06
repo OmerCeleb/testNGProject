@@ -15,7 +15,7 @@ import java.time.Duration;
 public class Driver {
 
     /*
-    This is SIMPLE Driver class .. created on Singleton design pattern.. but we will make it more DYNAMIC later on
+    This is SIMPLE Driver class ... created on Singleton design pattern.. but we will make it more DYNAMIC later on
 
     NOTE: This Driver class will work the same way with Sequential tests as well as Parallel Tests
 
