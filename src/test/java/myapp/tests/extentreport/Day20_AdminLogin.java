@@ -15,12 +15,20 @@ public class Day20_AdminLogin {
     3.
      */
 
+    /*
+     ADD LOGGER CAPABILITY
+     Use any method from LoggerUtilsClass
+     */
+
     BlueRental_HomePage blueRentalHomePage = new BlueRental_HomePage();
 
     BlueRental_LoginPage blueRentalLoginPage = new BlueRental_LoginPage();
 
     @Test
     public void blueRentalLoginTest() {
+
+        // Using Logger
+        LoggerUtils.info("Starting login Test");
 
         // 1.
         ExtentReportUtils.createTestReport("Smoke Test Report", "Login Function");
@@ -55,6 +63,8 @@ public class Day20_AdminLogin {
 
 //    Then verify the login is successful
         Assert.assertTrue(blueRentalLoginPage.dropDown.isDisplayed());
+
+        LoggerUtils.info("Login is successful");
 //    2.
         ExtentReportUtils.passAndCaptureScreenshot("User has logged in successfully");
 
@@ -81,12 +91,14 @@ public class Day20_AdminLogin {
 
         // 2.
         ExtentReportUtils.passAndCaptureScreenshot("Logout is successful");
-
+        LoggerUtils.info("Logout is successful");
 //        Close the driver
         Driver.closeDriver();
 
         // 2.
         ExtentReportUtils.info("Driver is closed");
+
+        ExtentReportUtils.flush();
 
     }
 }
