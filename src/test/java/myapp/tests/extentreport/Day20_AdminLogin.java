@@ -25,9 +25,8 @@ public class Day20_AdminLogin {
         // 1.
         ExtentReportUtils.createTestReport("Smoke Test Report", "Login Function");
 
-        // 1.
+        // 2.
         ExtentReportUtils.info("User is logging on to https://www.bluerentalcars.com/");
-
 
 
 //    Given user is on the application home page  https://www.bluerentalcars.com/
@@ -37,22 +36,31 @@ public class Day20_AdminLogin {
 //    Then clicks on login link
 
         BrowserUtils.clickWithTimeOut(blueRentalHomePage.userIcon, 1); // Dynamic way
+        // 2.
+        ExtentReportUtils.pass("User clicks on Login icon");
 
 //    Then enters admin email, password
 
         BrowserUtils.sendKeysWithTimeout(blueRentalLoginPage.email, ConfigReader.getProperty("bluerental_email"), 2);
         BrowserUtils.sendKeysWithTimeout(blueRentalLoginPage.password, ConfigReader.getProperty("bluerental_password"), 2);
 
+        // 2.
+        ExtentReportUtils.pass("User is entered email and password succesfully!");
 //    Then click on login button
 
         BrowserUtils.clickWithTimeOut(blueRentalLoginPage.loginButton, 1);
 
+        // 2.
+        ExtentReportUtils.pass("User clicked on log in button successfully");
+
 //    Then verify the login is successful
         Assert.assertTrue(blueRentalLoginPage.dropDown.isDisplayed());
+//    2.
+        ExtentReportUtils.passAndCaptureScreenshot("User has logged in successfully");
 
 
 //        Then logout and verify logout is successful
-//        First we need to click on dropdown so we can see logout option
+//        First we need to click on dropdown, so we can see logout option
         BrowserUtils.clickWithTimeOut(blueRentalLoginPage.dropDown, 2);
 
 
@@ -61,14 +69,24 @@ public class Day20_AdminLogin {
         BrowserUtils.clickWithTimeOut(blueRentalLoginPage.logoutOption, 2);
         WaitUtils.waitFor(3);
 
+        // 2.
+        ExtentReportUtils.info("User clicked on logout option");
+
         BrowserUtils.clickWithTimeOut(blueRentalLoginPage.okOption, 2);
+
 
 //        verify logout is successful
         WaitUtils.waitFor(2);
         BrowserUtils.verifyElementDisplayed(blueRentalHomePage.userIcon);
 
+        // 2.
+        ExtentReportUtils.passAndCaptureScreenshot("Logout is successful");
+
 //        Close the driver
         Driver.closeDriver();
+
+        // 2.
+        ExtentReportUtils.info("Driver is closed");
 
     }
 }
