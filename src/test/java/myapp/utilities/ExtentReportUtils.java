@@ -18,7 +18,7 @@ public class ExtentReportUtils {
     protected static ExtentTest extentTest;
 
     /*
-     Using static block will be called when ever I call ExtentReportUtils.somemethod....
+     Using static block will be called when ever I call ExtentReportUtils.some method....
      then the pre-requisites will be executed by the static block
     */
     static {
