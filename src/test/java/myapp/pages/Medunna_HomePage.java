@@ -16,6 +16,9 @@ public class Medunna_HomePage {
     public WebElement userIcon;
 
 
+    @FindBy(linkText = "Register")
+    public WebElement registerOption;
+
 
 
 
