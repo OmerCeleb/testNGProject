@@ -6,6 +6,7 @@ import myapp.utilities.BrowserUtils;
 import myapp.utilities.ConfigReader;
 import myapp.utilities.Driver;
 import myapp.utilities.WaitUtils;
+import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -32,11 +33,19 @@ public class Day21_US001 {
     @Test
     public void medunnaTest1() {
 
-        BrowserUtils.sendKeysWithTimeout(medunnaRegistrationPage.ssn, "22255-5432", 2);
+        medunnaRegistrationPage.ssn.sendKeys("22255-5432", Keys.TAB);
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
 
     }
 
+    @Test
+    public void medunnaTest2() {
+
+        medunnaRegistrationPage.ssn.sendKeys("222-5432", Keys.TAB);
+
+        BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
+
+    }
 
 }
