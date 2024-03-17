@@ -17,6 +17,8 @@ public class Medunna_RegistrationPage {
     @FindBy(xpath = "//div[text()='Your SSN is invalid']")
     public WebElement invalidSsnMessage;
 
+    @FindBy(xpath = "//div[.='Your SSN is required']")
+    public WebElement ssnRequiredMessage;
 
 
 }
