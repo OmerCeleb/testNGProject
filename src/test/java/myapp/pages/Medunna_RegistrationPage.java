@@ -20,5 +20,11 @@ public class Medunna_RegistrationPage {
     @FindBy(xpath = "//div[.='Your SSN is required']")
     public WebElement ssnRequiredMessage;
 
+    @FindBy(id = "firstName")
+    public WebElement firstName;
+
+    @FindBy(xpath = "//div[.='Your FirstName is required.']")
+    public WebElement firstNameRequiredMessage;
+
 
 }

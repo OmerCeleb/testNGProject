@@ -73,8 +73,8 @@ public class Driver {
                 driver.set(new ChromeDriver(new ChromeOptions().addArguments("--headless=new")));
                 break;
         }
-        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-        driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
+        driver.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.get().manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
         driver.get().manage().window().maximize();
 
     }

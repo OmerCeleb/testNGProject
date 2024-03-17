@@ -124,9 +124,25 @@ public class Day21_US001 {
     public void medunnaTest3() {
 //        AC003: There should be a valid name that contains any chars and cannot be blank
 //        AC003TC01: User leaves the FirstName blank, there should be "Your FirstName is required." message
+
+        medunnaRegistrationPage.firstName.sendKeys(Keys.TAB);
+        WaitUtils.waitFor(1);
+
+        BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.firstNameRequiredMessage);
 //        AC003TC02: User enters the FirstName only space, there should be "Your FirstName is required." message
+
+        medunnaRegistrationPage.firstName.sendKeys(Keys.SPACE, Keys.TAB);
+        WaitUtils.waitFor(1);
+
+        BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.firstNameRequiredMessage);
+
 //        AC003TC03: User enters the name that contains any chars, there should not be any error message
 
+        medunnaRegistrationPage.firstName.clear();
+        WaitUtils.waitFor(1);
+        medunnaRegistrationPage.firstName.sendKeys("John");
+
+        BrowserUtils.verifyElementNotDisplayed(medunnaRegistrationPage.firstNameRequiredMessage);
 
     }
 
