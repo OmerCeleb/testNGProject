@@ -6,25 +6,47 @@ import myapp.utilities.BrowserUtils;
 import myapp.utilities.ConfigReader;
 import myapp.utilities.Driver;
 import myapp.utilities.WaitUtils;
+import org.apache.commons.io.output.BrokenWriter;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class Day21_US001 {
+    /*
+    US001: Registration should be available using SSN, Firstname and Lastname
+        AC001: There should be a valid SSN respecting the "-" after 3rd and 5th digits, it should be 9 digits long
+            AC001TC01: User enters the ssn 22255-5432, there should be "Your SSN is invalid" message
+            AC001TC02: User enters the ssn 222-555432, there should be "Your SSN is invalid" message
+            AC001TC03: User enters the ssn 222-55-543, there should be "Your SSN is invalid" message
+            AC001TC04: User enters the ssn 222-55-543a, there should be "Your SSN is invalid" message
+            AC001TC05: User enters the ssn 222-55-5432, there should not be any error message
+        AC002: SSN cannot be left blank
+            AC002TC01: User leaves the ssn blank, there should be "Your SSN is required." message
+            AC002TC02: User enters the ssn only space, there should be "Your SSN is required." message
+            AC002TC03: User enters the ssn 222-55-5432, there should not be any error message
+        AC003: There should be a valid name that contains any chars and cannot be blank
+            AC003TC01: User leaves the FirstName blank, there should be "Your FirstName is required." message
+            AC003TC02: User enters the FirstName only space, there should be "Your FirstName is required." message
+            AC003TC03: User enters the name that contains any chars, there should not be any error message
+        AC004: There should be a valid lastname that contains any chars and it is a required field
+            AC004TC01: User leaves the lastname blank, there should be "Your LastName is required." message
+            AC004TC02: User enters the lastname only space, there should be "Your LastName is required." message
+            AC004TC03: User enters the lastname that contains any chars, there should not be any error message
+     */
 
     Medunna_HomePage medunnaHomePage = new Medunna_HomePage();
     Medunna_RegistrationPage medunnaRegistrationPage = new Medunna_RegistrationPage();
 
 
     @BeforeTest
-    public void setUp() {
+    public void setUP() {
 //        Driver.getDriver().get("https://www.medunna.com/");
         Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
         medunnaHomePage.userIcon.click();
         WaitUtils.waitFor(2);
         medunnaHomePage.registerOption.click();
+
 //        BrowserUtils.clickWithTimeOut(medunnaHomePage.userIcon, 2);
 //        BrowserUtils.clickWithTimeOut(medunnaHomePage.registerOption, 2);
 
@@ -33,45 +55,78 @@ public class Day21_US001 {
 
     @Test
     public void medunnaTest1() {
-
+//        AC001TC01: User enters the ssn 22255-5432, there should be "Your SSN is invalid" message
         medunnaRegistrationPage.ssn.sendKeys("22255-5432", Keys.TAB);
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
 
+//        AC001TC02: User enters the ssn 222-555432, there should be "Your SSN is invalid" message
         medunnaRegistrationPage.ssn.clear();
-        medunnaRegistrationPage.ssn.sendKeys("222-5432", Keys.TAB);
+        medunnaRegistrationPage.ssn.sendKeys("222-555432", Keys.TAB);
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
+        WaitUtils.waitFor(1);
 
+//        AC001TC03: User enters the ssn 222-55-543, there should be "Your SSN is invalid" message
 
         medunnaRegistrationPage.ssn.clear();
-        medunnaRegistrationPage.ssn.sendKeys("222-54-543", Keys.TAB);
+        medunnaRegistrationPage.ssn.sendKeys("222-55-543", Keys.TAB);
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
+        WaitUtils.waitFor(1);
 
-
+//        AC001TC04: User enters the ssn 222-55-543a, there should be "Your SSN is invalid" message
         medunnaRegistrationPage.ssn.clear();
-        medunnaRegistrationPage.ssn.sendKeys("222-54-543a", Keys.TAB);
+        medunnaRegistrationPage.ssn.sendKeys("222-55-543a", Keys.TAB);
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
+        WaitUtils.waitFor(1);
 
+//        AC001TC05: User enters the ssn 222-55-5432, there should not be any error message
 
         medunnaRegistrationPage.ssn.clear();
-        medunnaRegistrationPage.ssn.sendKeys("222-54-5432", Keys.TAB);
+        medunnaRegistrationPage.ssn.sendKeys("222-55-5432", Keys.TAB);
 
         BrowserUtils.verifyElementNotDisplayed(medunnaRegistrationPage.invalidSsnMessage);
+        WaitUtils.waitFor(1);
 
     }
 
     @Test
     public void medunnaTest2() {
 
-        medunnaRegistrationPage.ssn.click();
-        WaitUtils.waitFor(1);
-        medunnaRegistrationPage.ssn.sendKeys(Keys.TAB);
+//        AC002: SSN cannot be left blank
+//        AC002TC01: User leaves the ssn blank, there should be "Your SSN is required." message
+//        medunnaRegistrationPage.ssn.click(); // we will not send any value
+//        WaitUtils.waitFor(2);
+        medunnaRegistrationPage.ssn.sendKeys(Keys.TAB);  // makes the driver move out of ssn field
         WaitUtils.waitFor(1);
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.ssnRequiredMessage);
         WaitUtils.waitFor(1);
+
+//        AC002TC02: User enters the ssn only space, there should be "Your SSN is required." message
+//        medunnaRegistrationPage.ssn.sendKeys(" ", Keys.TAB);  OR
+        medunnaRegistrationPage.ssn.sendKeys(Keys.SPACE);
+        WaitUtils.waitFor(1);
+        BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.ssnRequiredMessage);
+        WaitUtils.waitFor(1);
+
+//        AC002TC03: User enters the ssn 222-55-5432, there should not be any error message
+        medunnaRegistrationPage.ssn.clear();
+        WaitUtils.waitFor(1);
+        medunnaRegistrationPage.ssn.sendKeys("222-55-5432", Keys.TAB);
+        BrowserUtils.verifyElementNotDisplayed(medunnaRegistrationPage.ssnRequiredMessage);
+        WaitUtils.waitFor(1);
+
+    }
+
+    @Test
+    public void medunnaTest3() {
+//        AC003: There should be a valid name that contains any chars and cannot be blank
+//        AC003TC01: User leaves the FirstName blank, there should be "Your FirstName is required." message
+//        AC003TC02: User enters the FirstName only space, there should be "Your FirstName is required." message
+//        AC003TC03: User enters the name that contains any chars, there should not be any error message
+
 
     }
 
