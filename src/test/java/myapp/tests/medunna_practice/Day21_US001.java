@@ -2,10 +2,7 @@ package myapp.tests.medunna_practice;
 
 import myapp.pages.Medunna_HomePage;
 import myapp.pages.Medunna_RegistrationPage;
-import myapp.utilities.BrowserUtils;
-import myapp.utilities.ConfigReader;
-import myapp.utilities.Driver;
-import myapp.utilities.WaitUtils;
+import myapp.utilities.*;
 import org.apache.commons.io.output.BrokenWriter;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
@@ -42,10 +39,14 @@ public class Day21_US001 {
     @BeforeTest
     public void setUP() {
 //        Driver.getDriver().get("https://www.medunna.com/");
+        ExtentReportUtils.createTestReport("Medunna Practice", "Medunna Registration Page");
         Driver.getDriver().get(ConfigReader.getProperty("medunna_url"));
+        ExtentReportUtils.pass("User is on Medunna HomPage");
         medunnaHomePage.userIcon.click();
+        ExtentReportUtils.pass("User clicks on user icon");
         WaitUtils.waitFor(2);
         medunnaHomePage.registerOption.click();
+        ExtentReportUtils.pass("User clicks on register option");
 
 //        BrowserUtils.clickWithTimeOut(medunnaHomePage.userIcon, 2);
 //        BrowserUtils.clickWithTimeOut(medunnaHomePage.registerOption, 2);
@@ -57,39 +58,51 @@ public class Day21_US001 {
     public void medunnaTest1() {
 //        AC001TC01: User enters the ssn 22255-5432, there should be "Your SSN is invalid" message
         medunnaRegistrationPage.ssn.sendKeys("22255-5432", Keys.TAB);
+        ExtentReportUtils.passAndCaptureScreenshot("User enters invalid ssn not respecting the dash");
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
+
+        ExtentReportUtils.passAndCaptureScreenshot("Your SSN is invalid message is displayed");
 
 //        AC001TC02: User enters the ssn 222-555432, there should be "Your SSN is invalid" message
         medunnaRegistrationPage.ssn.clear();
         medunnaRegistrationPage.ssn.sendKeys("222-555432", Keys.TAB);
+        ExtentReportUtils.passAndCaptureScreenshot("User enters invalid ssn not respecting the dash");
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
         WaitUtils.waitFor(1);
+        ExtentReportUtils.passAndCaptureScreenshot("Your SSN is invalid message is displayed");
 
 //        AC001TC03: User enters the ssn 222-55-543, there should be "Your SSN is invalid" message
 
         medunnaRegistrationPage.ssn.clear();
         medunnaRegistrationPage.ssn.sendKeys("222-55-543", Keys.TAB);
+        ExtentReportUtils.passAndCaptureScreenshot("User enters invalid ssn not respecting the dash");
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
         WaitUtils.waitFor(1);
+        ExtentReportUtils.passAndCaptureScreenshot("Your SSN is invalid message is displayed");
 
 //        AC001TC04: User enters the ssn 222-55-543a, there should be "Your SSN is invalid" message
         medunnaRegistrationPage.ssn.clear();
         medunnaRegistrationPage.ssn.sendKeys("222-55-543a", Keys.TAB);
+        ExtentReportUtils.passAndCaptureScreenshot("User enters invalid ssn not respecting the dash");
 
         BrowserUtils.verifyElementDisplayed(medunnaRegistrationPage.invalidSsnMessage);
         WaitUtils.waitFor(1);
+        ExtentReportUtils.passAndCaptureScreenshot("Your SSN is invalid message is displayed");
 
 //        AC001TC05: User enters the ssn 222-55-5432, there should not be any error message
 
         medunnaRegistrationPage.ssn.clear();
         medunnaRegistrationPage.ssn.sendKeys("222-55-5432", Keys.TAB);
+        ExtentReportUtils.passAndCaptureScreenshot("User enters Valid ssn");
 
         BrowserUtils.verifyElementNotDisplayed(medunnaRegistrationPage.invalidSsnMessage);
         WaitUtils.waitFor(1);
+        ExtentReportUtils.passAndCaptureScreenshot("Your SSN is invalid message is not displayed");
 
+        ExtentReportUtils.flush();
     }
 
     @Test
